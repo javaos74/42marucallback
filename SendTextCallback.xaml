@@ -1,0 +1,284 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.Endpoint="http://cm-api-dev.42maru.com" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="42Maru에서 넘겨주는 시나리오ID" Name="ScenarioId" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="42Maru에서 넘겨주는 세션ID" Name="SessionId" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="42Maru로 전달할 Text 메세지 리스트 " Name="TextMessages" Type="InArgument(s:String[])" />
+    <x:Property sap2010:Annotation.AnnotationText="42Marnu Endpoint&#xA;" Name="Endpoint" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="callback 응답코드 " Name="StatusCode" Type="OutArgument(x:Int32)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:Annotation.AnnotationText>UPTF000000D4eyI8SGVscExpbms+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8SW5pdGlhbFRvb2x0aXA+a19fQmFja2luZ0ZpZWxkIjoiNDJNYXJudSDssZfrtIfsnLzroZwg7YWN7Iqk7Yq4IOydkeuLteuplOyEuOyngCDrs7TrgrTquLAgIiwiPFZlcnNpb24+a19fQmFja2luZ0ZpZWxkIjoxfQ==</sap2010:Annotation.AnnotationText>
+  <sap:VirtualizedContainerService.HintSize>899,3065</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="34">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="42Marnu 챗봇으로 텍스트 응답메세지 보내기 " sap:VirtualizedContainerService.HintSize="382.5,2900" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="resp_hdrs" />
+      <Variable x:TypeArguments="x:String" Name="resp" />
+      <Variable x:TypeArguments="x:Int32" Name="status_code" />
+      <Variable x:TypeArguments="njl:JObject" Default="[new JObject()]" Name="jbody" />
+      <Variable x:TypeArguments="njl:JArray" Default="[new JArray()]" Name="jmsg" />
+      <Variable x:TypeArguments="njl:JArray" Name="jdata" />
+      <Variable x:TypeArguments="njl:JObject" Name="jmsg_obj" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign sap:VirtualizedContainerService.HintSize="340.5,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="njl:JObject">[jmsg_obj]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="njl:JObject">[new JObject]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="340.5,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="njl:JArray">[jdata]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="njl:JArray">[new JArray()]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="data Array 추가 " DisplayName="For Each" sap:VirtualizedContainerService.HintSize="340.5,668" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[TextMessages]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:String">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:String" Name="txt" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="본문" sap:VirtualizedContainerService.HintSize="304.5,502" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="njl:JObject" Name="jtxt" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="262.5,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="njl:JObject">[jtxt]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="njl:JObject">[new JObject]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="262.5,135" sap2010:WorkflowViewState.IdRef="InvokeMethod_11" MethodName="Add">
+              <InvokeMethod.TargetObject>
+                <InArgument x:TypeArguments="njl:JObject">[jtxt]</InArgument>
+              </InvokeMethod.TargetObject>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String">text</Literal>
+              </InArgument>
+              <InArgument x:TypeArguments="njl:JToken">
+                <mva:VisualBasicValue x:TypeArguments="njl:JToken" ExpressionText="txt" />
+              </InArgument>
+            </InvokeMethod>
+            <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="262.5,135" sap2010:WorkflowViewState.IdRef="InvokeMethod_12" MethodName="Add">
+              <InvokeMethod.TargetObject>
+                <InArgument x:TypeArguments="njl:JArray">[jdata]</InArgument>
+              </InvokeMethod.TargetObject>
+              <InArgument x:TypeArguments="njl:JObject">
+                <mva:VisualBasicValue x:TypeArguments="njl:JObject" ExpressionText="jtxt" />
+              </InArgument>
+            </InvokeMethod>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEach>
+    <InvokeMethod sap2010:Annotation.AnnotationText="type : output 추가 " DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="340.5,166" sap2010:WorkflowViewState.IdRef="InvokeMethod_8" MethodName="Add">
+      <InvokeMethod.TargetObject>
+        <InArgument x:TypeArguments="njl:JObject">[jmsg_obj]</InArgument>
+      </InvokeMethod.TargetObject>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <InArgument x:TypeArguments="x:String">type</InArgument>
+      <InArgument x:TypeArguments="njl:JToken">["output"]</InArgument>
+    </InvokeMethod>
+    <InvokeMethod sap2010:Annotation.AnnotationText="data_type : text 추가 " DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="340.5,166" sap2010:WorkflowViewState.IdRef="InvokeMethod_9" MethodName="Add">
+      <InvokeMethod.TargetObject>
+        <InArgument x:TypeArguments="njl:JObject">[jmsg_obj]</InArgument>
+      </InvokeMethod.TargetObject>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <InArgument x:TypeArguments="x:String">data_type</InArgument>
+      <InArgument x:TypeArguments="njl:JToken">["text"]</InArgument>
+    </InvokeMethod>
+    <InvokeMethod sap2010:Annotation.AnnotationText="messages 에 data 항목 추가 " DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="340.5,166" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Add">
+      <InvokeMethod.TargetObject>
+        <InArgument x:TypeArguments="njl:JObject">[jmsg_obj]</InArgument>
+      </InvokeMethod.TargetObject>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <InArgument x:TypeArguments="njl:JProperty" xml:space="preserve">[new JProperty("data",  jdata)]</InArgument>
+    </InvokeMethod>
+    <InvokeMethod sap2010:Annotation.AnnotationText="message array 에 항목 추가하기 " DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="340.5,166" sap2010:WorkflowViewState.IdRef="InvokeMethod_10" MethodName="Add">
+      <InvokeMethod.TargetObject>
+        <InArgument x:TypeArguments="njl:JArray">[jmsg]</InArgument>
+      </InvokeMethod.TargetObject>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <InArgument x:TypeArguments="njl:JObject">[jmsg_obj]</InArgument>
+    </InvokeMethod>
+    <InvokeMethod sap2010:Annotation.AnnotationText="시나리오ID 설정하기&#xA;" DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="334,179" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="Add">
+      <InvokeMethod.TargetObject>
+        <InArgument x:TypeArguments="njl:JObject">[jbody]</InArgument>
+      </InvokeMethod.TargetObject>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <InArgument x:TypeArguments="x:String">scenario_id</InArgument>
+      <InArgument x:TypeArguments="njl:JToken">[ScenarioId]</InArgument>
+    </InvokeMethod>
+    <InvokeMethod sap2010:Annotation.AnnotationText="세션ID 설정하기&#xA;" DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="334,179" sap2010:WorkflowViewState.IdRef="InvokeMethod_5" MethodName="Add">
+      <InvokeMethod.TargetObject>
+        <InArgument x:TypeArguments="njl:JObject">[jbody]</InArgument>
+      </InvokeMethod.TargetObject>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <InArgument x:TypeArguments="x:String">session_id</InArgument>
+      <InArgument x:TypeArguments="njl:JToken">[SessionId]</InArgument>
+    </InvokeMethod>
+    <InvokeMethod sap2010:Annotation.AnnotationText="메세지 배열 추가하기 " DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="InvokeMethod_6" MethodName="Add">
+      <InvokeMethod.TargetObject>
+        <InArgument x:TypeArguments="njl:JObject">[jbody]</InArgument>
+      </InvokeMethod.TargetObject>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <InArgument x:TypeArguments="njl:JProperty">[new JProperty("messages", jmsg)]</InArgument>
+    </InvokeMethod>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[Newtonsoft.Json.JsonConvert.SerializeObject( jbody)]" />
+    <ui:HttpClient ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" sap2010:Annotation.AnnotationText="42Marnu 챗봇으로 메세지를 전달 " Body="[Newtonsoft.Json.JsonConvert.SerializeObject( jbody)]" BodyFormat="application/json" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="HTTP Request" EndPoint="[string.Format(&quot;{0}/api/integration/uipath/callback&quot;, Endpoint)]" sap:VirtualizedContainerService.HintSize="334,66" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" ResponseHeaders="[resp_hdrs]" Result="[resp]" StatusCode="[status_code]" TimeoutMS="6000">
+      <ui:HttpClient.Attachments>
+        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+      </ui:HttpClient.Attachments>
+      <ui:HttpClient.Cookies>
+        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+      </ui:HttpClient.Cookies>
+      <ui:HttpClient.Headers>
+        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+      </ui:HttpClient.Headers>
+      <ui:HttpClient.Parameters>
+        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+      </ui:HttpClient.Parameters>
+      <ui:HttpClient.UrlSegments>
+        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+      </ui:HttpClient.UrlSegments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:HttpClient>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[resp]" />
+    <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[StatusCode]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[status_code]</InArgument>
+      </Assign.Value>
+    </Assign>
+  </Sequence>
+</Activity>
